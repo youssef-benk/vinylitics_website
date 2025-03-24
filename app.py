@@ -64,7 +64,7 @@ if 'results_fuzz' in st.session_state:
             # tempo_og = st.session_state.results_predict['result']['tempo'][0]
 
             for i, key in enumerate(keys, 1):
-                st.write(f"{i}. {st.session_state.results_predict['result']['track_name'][key].title()} by {st.session_state.results_predict['result']['artists'][key].title()}")
+                st.write(f"#### {i}. {st.session_state.results_predict['result']['track_name'][key].title()} by {st.session_state.results_predict['result']['artists'][key].title()}")
                 track_id = st.session_state.results_predict['result']['track_id'][key]
                 track_url = f"https://open.spotify.com/embed/track/{track_id}?utm_source=generator"
                 # tempo = st.session_state.results_predict['result']['tempo'][i]
