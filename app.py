@@ -9,7 +9,7 @@ st.set_page_config(
     layout="centered", # wide
     initial_sidebar_state="auto") # collapsed
 
-st.sidebar.markdown(f'''# Welcome to Vinylitics''')
+st.sidebar.markdown(f'''# Welcome to __Vinylitics__''')
 st.sidebar.markdown(f'''
                     ## The crate-diggers goldmine''')
 st.sidebar.markdown(f"""
@@ -70,9 +70,8 @@ if 'results_fuzz' in st.session_state:
                 # tempo = st.session_state.results_predict['result']['tempo'][i]
                 # tempo_change = np.round(tempo/tempo_og * 100, 2)
                 # Spotify embedded player:
-                components.iframe(track_url, width=500, height=100)
-
-                # # Drop-down insights
-                # expander = st.expander ("Extra insights")
-                # col1, col2, col3 = expander.columns(3)
+                components.iframe(track_url, width=800, height=400)
+                # Drop-down insights
+                expander = st.expander ("Extra insights")
+                col1, col2, col3 = expander.columns(3)
                 # col2 = col2.metric("BPM", str(np.round(tempo,0)), str(tempo_change)+"%")
