@@ -26,8 +26,8 @@ url_fuzz = 'https://vinylitics-510572518429.europe-west1.run.app/fuzzy_search'
 url_predict_spotify = 'https://vinylitics-510572518429.europe-west1.run.app/predict_spotify'
 
 if st.button("Search"):
-
-    st.write(f"Searching for {track} by {artist}...")
+    # st.spinner(text=f"Searching for {track} by {artist}...", *, show_time=False)
+    # st.write()
     st.session_state.results_fuzz = requests.get(url_fuzz, params={"track_name": track, "artist": artist}).json()
 
 if 'results_fuzz' in st.session_state:
@@ -54,7 +54,7 @@ if 'results_fuzz' in st.session_state:
             keys = st.session_state.results_predict['result']['track_name'].keys()
 
             for i, key in enumerate(keys):
-                st.write(f"{i+1}. {st.session_state.results_predict['result']['track_name'][key]} by {st.session_state.results_predict['result']['artists'][key]}")
+                st.write(f"{i+1}. {st.session_state.results_predict['result']['track_name'][key].title()} by {st.session_state.results_predict['result']['artists'][key].title()}")
                 track_id = st.session_state.results_predict['result']['track_id'][key]
                 track_url = f"https://open.spotify.com/embed/track/{track_id}?utm_source=generator"
-                components.iframe(track_url, width=300, height=80)
+                components.iframe(track_url, width=500, height=100)
