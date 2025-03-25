@@ -1,0 +1,180 @@
+/* Custom CSS for Vinylitics Streamlit App */
+
+/* General App Background and Text Styling */
+.stApp {
+  background-color: #f0f2f6; /* Light gray background for entire app */
+  color: #31333f; /* Dark text color for better readability */
+  font-family: 'sans-serif';
+}
+
+/* Main Header Styling - Orange color for app title */
+h1 {
+  color: #ff9839; /* Vibrant orange for main headers */
+  font-weight: bold;
+  font-size: 2.5em;
+}
+
+/* Secondary Headers */
+h2, h3, h4, h5, h6 {
+  color: #31333f;
+  font-family: 'sans-serif';
+}
+
+/* Sidebar Container Styling */
+[data-testid="stSidebar"] {
+  background-color: #ffffff; /* White background for sidebar */
+  padding: 1.5em 1em;
+  border-right: 1px solid #e0e0e0;
+}
+
+/* Sidebar Heading - Orange */
+[data-testid="stSidebar"] h1 {
+  color: #ff9839; /* Orange color for sidebar title */
+  font-size: 1.8em;
+  margin-bottom: 0.5em;
+}
+
+/* Sidebar Subtitle */
+[data-testid="stSidebar"] h2 {
+  color: #31333f;
+  font-size: 1.2em;
+  margin-top: 0;
+}
+
+/* Input Field Styling */
+[data-testid="stTextInput"] input {
+  background-color: #ffffff;
+  color: #31333f;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
+/* Button Styling - Orange theme */
+[data-testid="stButton"] button {
+  background-color: #ff9839; /* Orange button background */
+  color: #ffffff; /* White text color */
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%; /* Full width buttons */
+  transition: background-color 0.3s;
+}
+
+/* Button Hover Effect */
+[data-testid="stButton"] button:hover {
+  background-color: #e88728; /* Darker orange on hover */
+}
+
+/* "Show me the goods" Special Button Styling */
+.stButton button:contains("💥") {
+  font-weight: bold;
+  margin-top: 1em;
+}
+
+/* Radio Button Styling */
+[data-testid="stRadio"] > div {
+  margin-top: 1em;
+}
+
+[data-testid="stRadio"] label {
+  color: #31333f;
+}
+
+/* Success Message Styling */
+div[data-baseweb="notification"] {
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #c3e6cb;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Warning Message Styling */
+.stAlert.stWarning {
+  background-color: #fff3cd;
+  color: #856404;
+  border-color: #ffeeba;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Expander Styling for "Extra insights" */
+[data-testid="stExpander"] {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  margin-bottom: 1em;
+}
+
+/* Expander Header Styling */
+[data-testid="stExpander"] summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: #31333f;
+  padding: 10px;
+}
+
+/* Expander Content Styling */
+[data-testid="stExpander"] details {
+  padding: 10px;
+}
+
+/* Spotify Embedded Player Styling */
+iframe {
+  border: none;
+  border-radius: 10px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+/* Columns in Expander */
+[data-testid="stExpander"] [data-testid="stHorizontalBlock"] > div {
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+}
+
+/* Slider for Number of Recommendations */
+[data-testid="stSlider"] > div {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+/* Slider Thumb and Track */
+[data-testid="stSlider"] [data-testid="stThumbValue"] {
+  background-color: #ff9839; /* Orange slider thumb */
+}
+
+/* Metric Component Styling (for BPM, Key, etc.) */
+[data-testid="stMetric"] {
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+/* Metric Label */
+[data-testid="stMetricLabel"] {
+  font-weight: bold;
+  color: #31333f;
+}
+
+/* Metric Value - Using Orange Theme */
+[data-testid="stMetricValue"] {
+  font-size: 1.5em;
+  color: #ff9839;
+}
+
+/* Radar Chart Container (for music characteristics) */
+.radar-chart {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
