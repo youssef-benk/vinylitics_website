@@ -4,3 +4,5 @@ pandas
 seaborn
 matplotlib.pyplot
 numpy
+plotly
+orjson
