@@ -41,16 +41,21 @@ if st.sidebar.button("Search"):
     # st.spinner(text=f"Searching for {track} by {artist}...", *, show_time=False)
     # st.write()
     try:
-        st.session_state.results_fuzz = requests.get(url_fuzz, params={"track_name": track, "artist": artist}).json()
+        with st.spinner(text="Looking for your track...", show_time=False):
+            st.session_state.results_fuzz = requests.get(url_fuzz, params={"track_name": track, "artist": artist}).json()
+
     except:
         st.sidebar.warning("Looks like something went wrong 🫤 Try another track or artist!")
+        st.stop()
+
 
 if 'results_fuzz' in st.session_state:
     if st.session_state.results_fuzz['result'] == "Exact match found":
         st.session_state.sel_track_name = track
         st.session_state.sel_artist_name = artist
+        st.session_state.tempo_og = st.session_state.results_fuzz['track']['tempo']
         st.sidebar.success(f"Found it in our database 🤘")
-        # st.stop()
+
     else:
         choices = st.session_state.results_fuzz['choices']
         # st.button("Selection")
@@ -64,49 +69,55 @@ if 'results_fuzz' in st.session_state:
         st.sidebar.write(f"### Let's find similar tracks to {st.session_state.sel_track_name} by {st.session_state.sel_artist_name}:")
         # st.stop()
         if st.sidebar.button("💥 Show me the goods 💥"):
-            st.session_state.results_predict = requests.get(url_predict_spotify, params={"track_name": st.session_state.sel_track_name, "artist": st.session_state.sel_artist_name}).json()
-            st.write("### Here are some hidden gems we found for you:")
-            keys = st.session_state.results_predict['result']['track_name'].keys()
-            # tempo_og = st.session_state.results_predict['result']['tempo'][0]
+            try:
+                st.session_state.results_predict = requests.get(url_predict_spotify, params={"track_name": st.session_state.sel_track_name, "artist": st.session_state.sel_artist_name}).json()
 
-            for i, key in enumerate(keys, 1):
-                st.write(f"#### {i}. {st.session_state.results_predict['result']['track_name'][key].title()} by {st.session_state.results_predict['result']['artists'][key].title()}")
-                track_id = st.session_state.results_predict['result']['track_id'][key]
-                track_url = f"https://open.spotify.com/embed/track/{track_id}?utm_source=generator"
-                tempo = st.session_state.results_predict['result']['tempo'][key]
-                # tempo_change = np.round(tempo/tempo_og * 100, 2)
-                # Spotify embedded player:
-                components.iframe(track_url, width=800, height=400)
-                # Drop-down insights
-                expander = st.expander ("Extra insights")
+                st.write("### Here are some hidden gems we found for you:")
+                keys = st.session_state.results_predict['result']['track_name'].keys()
 
-                # Metrics - BPM and popularity
-                col1, col2, col3 = expander.columns(3)
-                col2 = col2.metric("BPM", str(np.round(tempo,0)), "xx%")
-                col3 = col3.metric("Popularity", str(st.session_state.results_predict['result']['popularity'][key]))
+                tempo_og = list(st.session_state.results_predict['sel_track']['tempo'].values())[0]
 
-                # Radar plot
-                r_key = []
-                r_key = [st.session_state.results_predict['result'][col][key] for col in plot_cols]
+                for i, key in enumerate(keys):
+                    st.write(f"#### {i+1}. {st.session_state.results_predict['result']['track_name'][key].title()} by {st.session_state.results_predict['result']['artists'][key].title()}")
+                    track_id = st.session_state.results_predict['result']['track_id'][key]
+                    track_url = f"https://open.spotify.com/embed/track/{track_id}?utm_source=generator"
+                    tempo = st.session_state.results_predict['result']['tempo'][key]
+                    tempo_change = np.round((tempo - tempo_og)/ tempo_og * 100, 0 )
+                    # Spotify embedded player:
+                    components.iframe(track_url, width=800, height=400)
+                    # Drop-down insights
+                    expander = st.expander ("Extra insights")
 
-                fig = go.Figure()
-                fig.add_trace(go.Scatterpolar(
-                    r=r_key,
-                    theta=plot_cols,
-                    fill='toself',
-                    fillcolor='orange',
-                    line_color ='orange',
-                    opacity=.5,
-                    name='Recommended track'
-                ))
+                    # Metrics - BPM and popularity
+                    col1, col2, col3 = expander.columns(3)
+                    col2 = col2.metric("BPM", str(np.round(tempo,0)),str(tempo_change)+"%")
+                    col3 = col3.metric("Popularity", str(st.session_state.results_predict['result']['popularity'][key]))
 
-                fig.update_layout(
-                polar=dict(
-                    radialaxis=dict(
-                    visible=True,
-                    range=[0, 1]
-                    )),
-                showlegend=True
-                )
+                    # Radar plot
+                    r_key = []
+                    r_key = [st.session_state.results_predict['result'][col][key] for col in plot_cols]
 
-                expander.plotly_chart(fig)
+                    fig = go.Figure()
+                    fig.add_trace(go.Scatterpolar(
+                        r=r_key,
+                        theta=plot_cols,
+                        fill='toself',
+                        fillcolor='orange',
+                        line_color ='orange',
+                        opacity=.5,
+                        name='Recommended track'
+                    ))
+
+                    fig.update_layout(
+                    polar=dict(
+                        radialaxis=dict(
+                        visible=True,
+                        range=[0, 1]
+                        )),
+                    showlegend=True
+                    )
+
+                    expander.plotly_chart(fig)
+            except:
+                st.warning('''#### Bummer, looks like we are missing features for this track. Wanna try another one?''')
+                st.stop()
