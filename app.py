@@ -45,7 +45,9 @@ if st.sidebar.button("Search"):
             st.session_state.results_fuzz = requests.get(url_fuzz, params={"track_name": track, "artist": artist}).json()
 
     except:
-        st.sidebar.warning("Looks like something went wrong 🫤 Try another track or artist!")
+        st.sidebar.write("Looks like your song is not in our database 😕 ")
+        st.sidebar.write("🏴‍☠️ Let's scrape Youtube to get this track's audio 🏴‍☠️")
+        st.sidebar.button("")
         st.stop()
 
 
@@ -71,7 +73,8 @@ if 'results_fuzz' in st.session_state:
         if st.sidebar.button("💥 Show me the goods 💥"):
             try:
                 st.session_state.results_predict = requests.get(url_predict_spotify, params={"track_name": st.session_state.sel_track_name, "artist": st.session_state.sel_artist_name}).json()
-
+                if "error" in st.session_state.results_predict.keys():
+                    st.warning('### We are missing values ')
                 st.write("### Here are some hidden gems we found for you:")
                 keys = st.session_state.results_predict['result']['track_name'].keys()
 
