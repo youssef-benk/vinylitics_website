@@ -2,7 +2,7 @@ streamlit
 requests
 pandas
 seaborn
-matplotlib.pyplot
+matplotlib
 numpy
 plotly
 orjson
