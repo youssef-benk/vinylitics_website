@@ -9,29 +9,40 @@
 
 /* Main Header Styling - Orange color for app title */
 h1 {
-  color: #ff9839; /* Vibrant orange for main headers */
+  color: #e8590c; /* Vibrant orange for main headers */
   font-weight: bold;
   font-size: 2.5em;
 }
 
 /* Secondary Headers */
 h2, h3, h4, h5, h6 {
-  color: #31333f;
-  font-family: 'sans-serif';
+  color: #31333fce;
 }
 
 /* Sidebar Container Styling */
 [data-testid="stSidebar"] {
-  background-color: #ffffff; /* White background for sidebar */
+  background-color: #f8f9fa; /* White background for sidebar */
   padding: 1.5em 1em;
   border-right: 1px solid #e0e0e0;
 }
 
 /* Sidebar Heading - Orange */
 [data-testid="stSidebar"] h1 {
-  color: #ff9839; /* Orange color for sidebar title */
-  font-size: 1.8em;
+  color: #e8590c; /* Orange color for sidebar title */
+  font-size: 2.5em;
   margin-bottom: 0.5em;
+}
+
+[data-testid="stHeader"]{
+  background-color: #f8f9fa;
+  color: #31333fce;
+}
+
+/* 🎨 Sidebar text input label styling */
+[data-testid="stSidebar"] label {
+  color: #31333fce;
+  font-weight: bold;
+  font-size: 1em;
 }
 
 /* Sidebar Subtitle */
@@ -45,27 +56,30 @@ h2, h3, h4, h5, h6 {
 [data-testid="stTextInput"] input {
   background-color: #ffffff;
   color: #31333f;
-  border: 1px solid #cccccc;
   border-radius: 5px;
   padding: 0.5em;
 }
 
 /* Button Styling - Orange theme */
 [data-testid="stButton"] button {
-  background-color: #ff9839; /* Orange button background */
+  background-color: #e8590c; /* Orange button background */
   color: #ffffff; /* White text color */
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
   font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
   width: 100%; /* Full width buttons */
   transition: background-color 0.3s;
 }
 
+
 /* Button Hover Effect */
 [data-testid="stButton"] button:hover {
-  background-color: #e88728; /* Darker orange on hover */
+  background-color: #e8590c;
+  font-weight: bold;
+  /* Darker orange on hover */
 }
 
 /* "Show me the goods" Special Button Styling */
@@ -77,10 +91,13 @@ h2, h3, h4, h5, h6 {
 /* Radio Button Styling */
 [data-testid="stRadio"] > div {
   margin-top: 1em;
+
 }
 
-[data-testid="stRadio"] label {
+[data-testid="stRadio"] div {
   color: #31333f;
+  font-size: 14px;
+
 }
 
 /* Success Message Styling */
@@ -96,10 +113,11 @@ div[data-baseweb="notification"] {
 .stAlert.stWarning {
   background-color: #fff3cd;
   color: #856404;
-  border-color: #ffeeba;
+  border-color: #fff3cd;
   padding: 10px;
   border-radius: 5px;
 }
+
 
 /* Expander Styling for "Extra insights" */
 [data-testid="stExpander"] {
@@ -113,7 +131,7 @@ div[data-baseweb="notification"] {
 [data-testid="stExpander"] summary {
   cursor: pointer;
   font-weight: bold;
-  color: #31333f;
+  color: #3f3131;
   padding: 10px;
 }
 
@@ -123,18 +141,17 @@ div[data-baseweb="notification"] {
 }
 
 /* Spotify Embedded Player Styling */
-iframe {
+/*iframe {
   border: none;
   border-radius: 10px;
   margin-top: 1em;
   margin-bottom: 1em;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
 }
 
 /* Columns in Expander */
-[data-testid="stExpander"] [data-testid="stHorizontalBlock"] > div {
-  background-color: #f8f9fa;
+/*[data-testid="stExpander"] [data-testid="stHorizontalBlock"] > div {
+  background-color: #ffffff;
   border-radius: 5px;
   padding: 10px;
   margin: 5px;
@@ -144,19 +161,25 @@ iframe {
 [data-testid="stSlider"] > div {
   margin-top: 2em;
   margin-bottom: 2em;
+
 }
 
 /* Slider Thumb and Track */
 [data-testid="stSlider"] [data-testid="stThumbValue"] {
-  background-color: #ff9839; /* Orange slider thumb */
+  background-color: #e8590c; /* Orange slider thumb */
 }
 
 /* Metric Component Styling (for BPM, Key, etc.) */
-[data-testid="stMetric"] {
+/*[data-testid="stMetric"] {
   background-color: #f8f9fa;
   border-radius: 5px;
   padding: 10px;
   border: 1px solid #e0e0e0;
+  width: 150px;
+  height: 90px;
+  display: inline-block;
+  text-align: center;
+  margin-right: 10px;
 }
 
 /* Metric Label */
@@ -168,12 +191,13 @@ iframe {
 /* Metric Value - Using Orange Theme */
 [data-testid="stMetricValue"] {
   font-size: 1.5em;
-  color: #ff9839;
+  color: #e8590c;
 }
 
-/* Radar Chart Container (for music characteristics) */
+/* Radar Chart Container (for music) */
 .radar-chart {
   background-color: #ffffff;
+  background-color: transparent;
   border-radius: 10px;
   padding: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
