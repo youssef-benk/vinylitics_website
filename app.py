@@ -36,6 +36,7 @@ artist = st.sidebar.text_input("Artist name", key="artist")
 
 url_fuzz = 'https://vinylitics-510572518429.europe-west1.run.app/fuzzy_search'
 url_predict_spotify = 'https://vinylitics-510572518429.europe-west1.run.app/predict_spotify'
+url_scrap = 'https://vinylitics-510572518429.europe-west1.run.app/song_scrap'
 
 if st.sidebar.button("Search"):
     # st.spinner(text=f"Searching for {track} by {artist}...", *, show_time=False)
@@ -47,8 +48,33 @@ if st.sidebar.button("Search"):
     except:
         st.sidebar.write("Looks like your song is not in our database 😕 ")
         st.sidebar.write("🏴‍☠️ Let's scrape Youtube to get this track's audio 🏴‍☠️")
-        st.sidebar.button("")
-        st.stop()
+        st.sidebar.write("❗️ _This might take a bit longer_ ❗️ ")
+
+
+if st.sidebar.button("Scrap my song"):
+    # st.markdown('''After you clic this button we:
+    #                 * Get the track audio file
+    #                 * Analyse the audio signal
+    #                 * Compute the high level features''')
+    try:
+        with st.spinner(text="Getting and processing you track...", show_time=True):
+            gif_runner = st.image('https://global.discourse-cdn.com/streamlit/original/2X/2/247a8220ebe0d7e99dbbd31a2c227dde7767fbe1.gif')
+            st.session_state.results_scrap = requests.get(url_scrap, params={'track_name': f"{track} {artist}"}).json()
+            gif_runner.empty()
+            st.write(st.session_state.results_scrap['result']['tempo'][0])
+
+        try:
+            st.session_state.sel_track_name = track
+            st.session_state.sel_artist_name = artist
+            st.session_state.tempo_og = st.session_state.results_scrap['result']['tempo'][0]
+
+        except:
+            st.write("# Something went wrong, wanna try another track?")
+            st.stop()
+
+
+    except:
+        st.write("### Something went wrong, wanna try another track?")
 
 
 if 'results_fuzz' in st.session_state:
