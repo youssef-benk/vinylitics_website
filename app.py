@@ -55,6 +55,7 @@ artist = st.sidebar.text_input("artist name", key="artist")
 
 url_fuzz = 'https://vinylitics-510572518429.europe-west1.run.app/fuzzy_search'
 url_predict_spotify = 'https://vinylitics-510572518429.europe-west1.run.app/predict_spotify'
+url_scrap = 'https://vinylitics-510572518429.europe-west1.run.app/song_scrap'
 
 if st.sidebar.button("search"):
     # st.spinner(text=f"Searching for {track} by {artist}...", *, show_time=False)
@@ -91,6 +92,35 @@ if st.sidebar.button("search"):
         loader.empty()
 
     except:
+
+        st.sidebar.write("Looks like your song is not in our database 😕 ")
+        st.sidebar.write("🏴‍☠️ Let's scrape Youtube to get this track's audio 🏴‍☠️")
+        st.sidebar.write("❗️ _This might take a bit longer_ ❗️ ")
+
+
+# if st.sidebar.button("Scrap my song"):
+#     # st.markdown('''After you clic this button we:
+#     #                 * Get the track audio file
+#     #                 * Analyse the audio signal
+#     #                 * Compute the high level features''')
+#         with st.spinner(text="Getting and processing you track...", show_time=True):
+#             gif_runner = st.image('https://global.discourse-cdn.com/streamlit/original/2X/2/247a8220ebe0d7e99dbbd31a2c227dde7767fbe1.gif')
+#             st.session_state.results_scrap = requests.get(url_scrap, params={'track_name': f"{track} {artist}"}).json()
+#             gif_runner.empty()
+
+
+#         if st.session_state.results_scrap.get("result", None):
+
+#             st.session_state.sel_track_name = track
+#             st.session_state.sel_artist_name = artist
+#             st.session_state.tempo_og = list(st.session_state.results_scrap['result']['tempo'].values())[0]
+
+
+#         else:
+#             st.write("# Something went wrong, wanna try another track?")
+#             st.stop()
+
+
         st.sidebar.warning("looks like something went wrong 🫤 try another track or artist!")
         st.stop()
 
@@ -100,12 +130,12 @@ if 'results_fuzz' in st.session_state:
         st.session_state.sel_track_name = track
         st.session_state.sel_artist_name = artist
         st.session_state.tempo_og = st.session_state.results_fuzz['track']['tempo']
-        st.sidebar.success(f"Found it in our database 🤘")
+        st.sidebar.success(f"found it in our database 🤘")
 
     else:
         choices = st.session_state.results_fuzz['choices']
         # st.button("Selection")
-        song_selection = st.sidebar.radio(f"No exact match found for {track} by {artist}. Did you mean:",
+        song_selection = st.sidebar.radio(f"no exact match found for {track} by {artist}. did you mean:",
                                 (choices[0][0], choices[1][0], choices[2][0]))
         st.session_state.sel_track_name = song_selection.split(" by ")[0]
         st.session_state.sel_artist_name = song_selection.split(" by ")[1]
@@ -118,7 +148,10 @@ if 'results_fuzz' in st.session_state:
             try:
                 st.session_state.results_predict = requests.get(url_predict_spotify, params={"track_name": st.session_state.sel_track_name, "artist": st.session_state.sel_artist_name}).json()
 
+                if "error" in st.session_state.results_predict.keys():
+                    st.warning('### We are missing values ')
                 st.write("### here are some hidden gems we found for you:")
+
                 keys = st.session_state.results_predict['result']['track_name'].keys()
 
                 tempo_og = list(st.session_state.results_predict['sel_track']['tempo'].values())[0]
