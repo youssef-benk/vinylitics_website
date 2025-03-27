@@ -56,25 +56,23 @@ if st.sidebar.button("Scrap my song"):
     #                 * Get the track audio file
     #                 * Analyse the audio signal
     #                 * Compute the high level features''')
-    try:
         with st.spinner(text="Getting and processing you track...", show_time=True):
             gif_runner = st.image('https://global.discourse-cdn.com/streamlit/original/2X/2/247a8220ebe0d7e99dbbd31a2c227dde7767fbe1.gif')
             st.session_state.results_scrap = requests.get(url_scrap, params={'track_name': f"{track} {artist}"}).json()
             gif_runner.empty()
-            st.write(st.session_state.results_scrap['result']['tempo'][0])
 
-        try:
+
+        if st.session_state.results_scrap.get("result", None):
+
             st.session_state.sel_track_name = track
             st.session_state.sel_artist_name = artist
-            st.session_state.tempo_og = st.session_state.results_scrap['result']['tempo'][0]
+            st.session_state.tempo_og = list(st.session_state.results_scrap['result']['tempo'].values())[0]
+            st.write(st.session_state.tempo_og)
 
-        except:
+        else:
             st.write("# Something went wrong, wanna try another track?")
             st.stop()
 
-
-    except:
-        st.write("### Something went wrong, wanna try another track?")
 
 
 if 'results_fuzz' in st.session_state:
