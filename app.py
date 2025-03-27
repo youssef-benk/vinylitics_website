@@ -94,8 +94,8 @@ if st.sidebar.button("search"):
     except:
 
         st.sidebar.write("Looks like your song is not in our database 😕 ")
-        st.sidebar.write("🏴‍☠️ Let's scrape Youtube to get this track's audio 🏴‍☠️")
-        st.sidebar.write("❗️ _This might take a bit longer_ ❗️ ")
+#        st.sidebar.write("🏴‍☠️ Let's scrape Youtube to get this track's audio 🏴‍☠️")
+#        st.sidebar.write("❗️ _This might take a bit longer_ ❗️ ")
 
 
 # if st.sidebar.button("Scrap my song"):
