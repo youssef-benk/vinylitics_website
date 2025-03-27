@@ -43,7 +43,7 @@ plot_cols = ['danceability',
 
 st.markdown(
     """<p style='text-align: center;'>
-    just enter the name of a track and artist, and vynilitics returns you similar yet less known tracks - maybe a hidden gem?
+    just enter the name of a track and artist, and vinylitics returns you similar yet less known tracks - maybe a hidden gem?
     </p>""",
     unsafe_allow_html=True
 )
