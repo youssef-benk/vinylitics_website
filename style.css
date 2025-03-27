@@ -3,7 +3,7 @@
 /* General App Background and Text Styling */
 .stApp {
   background-color: #f0f2f6; /* Light gray background for entire app */
-  color: #31333f; /* Dark text color for better readability */
+  color: #31333fce; /* Dark text color for better readability */
   font-family: 'sans-serif';
 }
 
@@ -47,7 +47,7 @@ h2, h3, h4, h5, h6 {
 
 /* Sidebar Subtitle */
 [data-testid="stSidebar"] h2 {
-  color: #31333f;
+  color: #31333fce;
   font-size: 1.2em;
   margin-top: 0;
 }
@@ -55,7 +55,7 @@ h2, h3, h4, h5, h6 {
 /* Input Field Styling */
 [data-testid="stTextInput"] input {
   background-color: #ffffff;
-  color: #31333f;
+  color: #31333fce;
   border-radius: 5px;
   padding: 0.5em;
 }
@@ -81,6 +81,10 @@ h2, h3, h4, h5, h6 {
   font-weight: bold;
   /* Darker orange on hover */
 }
+[data-testid="stButton"] button:active,
+[data-testid="stButton"] button:focus {
+  color: #ffffff !important;
+}
 
 /* "Show me the goods" Special Button Styling */
 .stButton button:contains("💥") {
@@ -95,7 +99,7 @@ h2, h3, h4, h5, h6 {
 }
 
 [data-testid="stRadio"] div {
-  color: #31333f;
+  color: #31333fce;
   font-size: 14px;
 
 }
@@ -131,7 +135,7 @@ div[data-baseweb="notification"] {
 [data-testid="stExpander"] summary {
   cursor: pointer;
   font-weight: bold;
-  color: #3f3131;
+  color: #31333fce;
   padding: 10px;
 }
 
@@ -185,7 +189,7 @@ div[data-baseweb="notification"] {
 /* Metric Label */
 [data-testid="stMetricLabel"] {
   font-weight: bold;
-  color: #31333f;
+  color: #31333fce;
 }
 
 /* Metric Value - Using Orange Theme */
