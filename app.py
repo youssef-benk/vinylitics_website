@@ -43,7 +43,8 @@ plot_cols = ['danceability',
 
 st.markdown(
     """<p style='text-align: center;'>
-    just enter the name of a track and artist, and vinylitics returns you similar yet less known tracks - maybe a hidden gem?
+    just enter the name of a track and artist<br>
+    vinylitics returns you similar yet less known tracks - maybe a hidden gem?
     </p>""",
     unsafe_allow_html=True
 )
@@ -93,8 +94,8 @@ if st.sidebar.button("search"):
     except:
 
         st.sidebar.write("Looks like your song is not in our database 😕 ")
-        st.sidebar.write("🏴‍☠️ Let's scrape Youtube to get this track's audio 🏴‍☠️")
-        st.sidebar.write("❗️ _This might take a bit longer_ ❗️ ")
+#        st.sidebar.write("🏴‍☠️ Let's scrape Youtube to get this track's audio 🏴‍☠️")
+#        st.sidebar.write("❗️ _This might take a bit longer_ ❗️ ")
 
 
 # if st.sidebar.button("Scrap my song"):
@@ -212,5 +213,5 @@ if 'results_fuzz' in st.session_state:
 
                     expander.plotly_chart(fig)
             except:
-                st.warning('''#### Bummer, looks like we are missing features for this track. Wanna try another one?''')
+                st.warning('''##### bummer, we are missing features for this track, wanna try another one?''')
                 st.stop()
