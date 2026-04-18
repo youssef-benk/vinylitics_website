@@ -39,11 +39,16 @@ each of the ten recommended songs is presented with an **embedded spotify player
 ---
 
 ## the team
-[dj flore](https://github.com/flore-perr)
-[dj adviti](https://github.com/advitis)
-[mc stephanie](https://github.com/3Digitals-Agentur)
-[mc youssef](https://github.com/youssef-benk)
-[dj suzie](https://github.com/SuzieBeasse)
+⚡️ [dj flore](https://github.com/flore-perr)
+
+🎸 [dj adviti](https://github.com/advitis)
+
+💥 [mc stephanie](https://github.com/3Digitals-Agentur)
+
+🎸 [mc youssef](https://github.com/youssef-benk)
+
+⚡️ [dj suzie](https://github.com/SuzieBeasse)
 
 → backend repo: [vinylitics](https://github.com/youssef-benk/vinylitics)
+
 → 🎵 live app 🎵: [vinylitics.streamlit.app](https://vinylitics.streamlit.app/)
