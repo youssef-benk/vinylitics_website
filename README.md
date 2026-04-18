@@ -4,7 +4,7 @@
 
 this is the streamlit-powered frontend for **vinylitics**, a music discovery app that recommends ten hidden gems based on a song you already love. no more algorithmic echo chambers, just music worth finding.
 
-→ **[try it live →](https://vinylitics.streamlit.app/)**
+→ **[try it live 🎸](https://vinylitics.streamlit.app/)**
 
 ---
 
