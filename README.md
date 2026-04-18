@@ -1,3 +1,5 @@
+(./banner.png)
+
 # vinylitics 🎵 frontend
 
 > the face of a gold mine for crate diggers.
