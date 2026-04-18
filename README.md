@@ -2,8 +2,6 @@
 
 # vinylitics 🎵 frontend
 
-> the face of a gold mine for crate diggers.
-
 this is the streamlit-powered frontend for **vinylitics**, a music discovery app that recommends ten hidden gems based on a song you already love. no more algorithmic echo chambers, just music worth finding.
 
 → **[try it live 🎸](https://vinylitics.streamlit.app/)**
@@ -26,7 +24,7 @@ each of the ten recommended songs is presented with an **embedded spotify player
 
 **3.** you get back ten tracks similar in sound to your input, but deliberately chosen from the least-streamed songs in the database
 
-**4.** each result comes with an embedded spotify player, ready to play 🎸
+**4.** each result comes with an embedded spotify player, ready to play 🎸 you also get a matching score, compared to your input track, and an analysis of the hidden gems features
 
 ---
 
@@ -47,9 +45,12 @@ each of the ten recommended songs is presented with an **embedded spotify player
 
 💥 [mc stephanie](https://github.com/3Digitals-Agentur)
 
-🎸 [mc youssef](https://github.com/youssef-benk)
+🎵 [mc youssef](https://github.com/youssef-benk)
 
-⚡️ [dj suzie](https://github.com/SuzieBeasse)
+📼 [dj suzie](https://github.com/SuzieBeasse)
+
+---
+## Let's dig in
 
 → backend repo: [vinylitics](https://github.com/youssef-benk/vinylitics)
 
